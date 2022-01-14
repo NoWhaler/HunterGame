@@ -29,6 +29,10 @@ public class HunterMovement : MonoBehaviour
     [SerializeField]
     private int _amountBullets; 
     
+    public void Die(){
+        Destroy(gameObject);
+    }
+
     private void Awake(){
         _rigidBody = GetComponent<Rigidbody2D>();
         _controls = new PlayerControls();
