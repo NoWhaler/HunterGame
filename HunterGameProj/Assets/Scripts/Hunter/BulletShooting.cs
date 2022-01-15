@@ -18,12 +18,12 @@ public class BulletShooting : MonoBehaviour
 
     }
     
-    void Update()
+    private void Update()
     {
         transform.Translate(Vector3.up * _bulletSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other){
+    private void OnTriggerEnter2D(Collider2D other){        
         Destroy(gameObject);
     }
 }

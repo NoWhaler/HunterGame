@@ -33,6 +33,12 @@ public class HunterMovement : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //     if (other.CompareTag("Creatures")){
+    //         Destroy(gameObject);
+    //     }
+    // }
+
     private void Awake(){
         _rigidBody = GetComponent<Rigidbody2D>();
         _controls = new PlayerControls();
@@ -56,7 +62,7 @@ public class HunterMovement : MonoBehaviour
     }
 
     private void HunterShoot(){
-        if (!_canShoot && _amountBullets <= 0) return;
+        if (!_canShoot) return;
         BulletsCount(-1);
         Vector2 mousePosition = _controls.Player.MousePosition.ReadValue<Vector2>();
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);

@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CreaturesSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _deerPrefab;
+    private GameObject _deer;
     [SerializeField]
-    private GameObject _wolfPrefab;
+    private GameObject _wolf;
     [SerializeField]
-    private GameObject _rabbitPrefab;
+    private GameObject _rabbit;
     
     [SerializeField]
     private int _deerCount;
@@ -26,19 +24,13 @@ public class CreaturesSpawner : MonoBehaviour
 
     private void Start (){
         for (int i = 0; i < _deerCount; i++){
-            Instantiate(_deerPrefab, RandomSpawnPointOnSquare(), Quaternion.identity);
+            Instantiate(_deer, RandomSpawnPointOnSquare(), Quaternion.identity);
         }
         for (int i = 0; i < _wolfCount; i++){
-            Instantiate(_wolfPrefab, RandomSpawnPointOnSquare(), Quaternion.identity);
+            Instantiate(_wolf, RandomSpawnPointOnSquare(), Quaternion.identity);
         }
         for (int i = 0; i < _rabbitCount; i++){
-            Instantiate(_rabbitPrefab, RandomSpawnPointOnSquare(), Quaternion.identity);
+            Instantiate(_rabbit, RandomSpawnPointOnSquare(), Quaternion.identity);
         }
-    }
-
-    private void SpawnCreatures(){
-
-    }
-
-       
+    }       
 }
