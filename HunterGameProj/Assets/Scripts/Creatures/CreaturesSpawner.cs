@@ -17,8 +17,8 @@ public class CreaturesSpawner : MonoBehaviour
     private int _rabbitCount;
 
     private Vector2 RandomSpawnPointOnSquare(){
-        float x = Random.Range(-24f, 24f);
-        float y = Random.Range(-24f, 24f);
+        float x = Random.Range(-25f, 25f);
+        float y = Random.Range(-25f, 25f);
         return new Vector2(x, y);
     }
 

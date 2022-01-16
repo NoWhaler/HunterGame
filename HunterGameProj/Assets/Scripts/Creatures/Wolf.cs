@@ -18,9 +18,11 @@ public class Wolf : MonoBehaviour
     [SerializeField]
     private float _chaseRange;    
 
-    private float waitTime;
+    private float _waitTime;
 
-    private float startWaitTime = 0f;
+    private float _startWaitTime = 0f;
+
+    private float _additionalLifeTime = 5f;
 
     [Header("Walk values")]
 
@@ -42,14 +44,12 @@ public class Wolf : MonoBehaviour
     [SerializeField]
     private float _dieWithoutCatch;    
 
-    private bool _chase = false;
-
     private bool _walk = true;
 
     private Rigidbody2D _rigidBody;      
 
     private void Start(){        
-        waitTime = startWaitTime;
+        _waitTime = _startWaitTime;
         moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
         _rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -85,11 +85,11 @@ public class Wolf : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, moveSpot.position, _baseSpeed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, moveSpot.position) < 0.1f){
-            if (waitTime <= 0){
+            if (_waitTime <= 0){
                 moveSpot.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-                waitTime = startWaitTime;
+                _waitTime = _startWaitTime;
             }else{
-                waitTime -= Time.deltaTime;
+                _waitTime -= Time.deltaTime;
             }
         }
     }    
@@ -110,7 +110,7 @@ public class Wolf : MonoBehaviour
         catchTarget = catchTarget.Where(t => t.tag !="Cliff").ToList();
         
         if (catchTarget.Count > 0){
-            float minDist = 100f;
+            float minDist = 10f;
             GameObject target = null;
             foreach (var potentialTarget in catchTarget){           
                 if (potentialTarget.gameObject.tag == "Hunter"
@@ -120,7 +120,7 @@ public class Wolf : MonoBehaviour
                                    new Vector2(potentialTarget.gameObject.transform.position.x,
                                    potentialTarget.gameObject.transform.position.y));
                     if (distance <= minDist &&
-                        distance >0.5f){
+                        distance > 0.5f){
                         minDist = distance;                    
                         target = potentialTarget.gameObject;
                     }
@@ -137,6 +137,7 @@ public class Wolf : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Rabbit") || other.CompareTag("Hunter") || other.CompareTag("Deer")){
             Destroy(other.gameObject);
+            _dieWithoutCatch += _additionalLifeTime;
         }
 
         if (other.CompareTag("Bullet")){
