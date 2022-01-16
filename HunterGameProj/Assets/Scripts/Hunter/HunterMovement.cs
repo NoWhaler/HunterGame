@@ -31,13 +31,7 @@ public class HunterMovement : MonoBehaviour
     
     public void Die(){
         Destroy(gameObject);
-    }
-
-    // private void OnTriggerEnter2D(Collider2D other) {
-    //     if (other.CompareTag("Creatures")){
-    //         Destroy(gameObject);
-    //     }
-    // }
+    }    
 
     private void Awake(){
         _rigidBody = GetComponent<Rigidbody2D>();

@@ -8,6 +8,9 @@ TagManager:
   - Creatures
   - Bullet
   - Cliff
+  - Wolf
+  - Deer
+  - Rabbit
   layers:
   - Default
   - TransparentFX
