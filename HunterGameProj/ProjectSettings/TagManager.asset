@@ -8,9 +8,12 @@ TagManager:
   - Creatures
   - Bullet
   - Cliff
+  - EnemyCreature
+  - FriendlyCreature
   - Wolf
-  - Deer
   - Rabbit
+  - Deer
+  - Square
   layers:
   - Default
   - TransparentFX
