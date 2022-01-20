@@ -33,7 +33,7 @@ public class DeerBehavior : SteeringBehavior
 
     private float timeBeforeNewDirectionIsChosen; 
 
-    private List<GameObject> flock; 
+    private List<GameObject> _flock; 
 
 
     new void Start(){
@@ -44,19 +44,38 @@ public class DeerBehavior : SteeringBehavior
 
     private void Update() {
 
-        flock = GameObject.FindGameObjectsWithTag("Deer").Select(flock => flock.transform.parent.gameObject).ToList();
+        _closestAvoidTarget = DetectThreat();
+
+        _flock = GameObject.FindGameObjectsWithTag("Deer").Select(flock => flock.transform.parent.gameObject).ToList();
 
         Vector3 cliff = AvoidCliffs();
 
-        Vector3 avoidance = Avoid(flock); 
+        Vector3 avoidance = Avoid(_flock); 
 
-        Vector3 cohesion = Cohesion(flock);  
+        Vector3 cohesion = Cohesion(_flock);  
 
-        Vector3 align = Alingment(flock);     
-
-        _closestAvoidTarget = DetectThreat();
+        Vector3 align = Alingment(_flock);        
 
         Vector3 steeringBehavior = Vector3.zero;
+        
+        if (closestTargetDistance < (_avoidRange * _avoidRange)){
+            behavior = Behaviors.AVOID;
+            if (_closestAvoidTarget != null){
+                _target = _closestAvoidTarget;                
+            }
+            else{
+                behavior = Behaviors.WANDER;
+                
+            }
+        } else if (closestTargetDistance > _walkRange * _walkRange){
+            behavior = Behaviors.WANDER;
+                      
+        }
+        else{
+            if (_closestAvoidTarget == null){
+                behavior = Behaviors.WANDER;                
+            }
+        }
 
         switch (behavior){
             case Behaviors.WANDER:
@@ -66,24 +85,18 @@ public class DeerBehavior : SteeringBehavior
                     FindNewSpot();
                     timeBeforeNewDirectionIsChosen = Time.time + _timeBeforeNewDirectionIsChosen;
                 }
-                break;
-                
-
+                break;                
+            
             case Behaviors.AVOID:
                 steeringBehavior = Escape(_target.position);
-                break;
-                
-
-            case Behaviors.COHESION:
-
-                break;
+                break;            
         }
 
         ApplyForce(steeringBehavior);
-        ApplyForce(cohesion * 2f);
-        ApplyForce(avoidance * 2f);
+        ApplyForce(cohesion * 1.2f);    
+        ApplyForce(avoidance * 1.2f);
         ApplyForce(align);
-        ApplyForce(cliff * 2f);
+        ApplyForce(cliff * 1.2f);
         ApplySteeringToMotion();
     }
 
@@ -120,7 +133,6 @@ public class DeerBehavior : SteeringBehavior
                 difference.Normalize();
                 sum += difference;
                 count++;
-
             }
         }
 
@@ -137,7 +149,7 @@ public class DeerBehavior : SteeringBehavior
     }       
 
     public Vector3 Alingment(List<GameObject> flock){
-        float neighborDistance = 5f;
+        float neighborDistance = 10f;
         Vector3 sum = new Vector3();
         int count = 0;
         foreach (var deerCreature in flock){
@@ -192,7 +204,5 @@ public class DeerBehavior : SteeringBehavior
         if (other.CompareTag("Bullet")){
             Destroy(gameObject);
         } 
-    }  
-
-    
+    }    
 }

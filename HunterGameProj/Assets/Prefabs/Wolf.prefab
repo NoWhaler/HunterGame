@@ -242,8 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b589d960706a78441a1c384c44077097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3.5
-  _force: 1
+  velocity: {x: 0, y: 0, z: 0}
+  speed: 3.5
+  force: 0.8
   behavior: 0
   _wanderSpeed: 3.5
   _chaseSpeed: 4.5

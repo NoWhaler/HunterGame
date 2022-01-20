@@ -9,8 +9,12 @@ public class CliffDeath : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.CompareTag("Wolf") || other.CompareTag("Rabbit") || other.CompareTag("Deer")){
+        if (other.CompareTag("Animals")){
             Destroy(other.gameObject);
-        }        
+        }  
+
+        if (other.CompareTag("Wolf")){
+            Destroy(other.gameObject);
+        }       
     }
 }

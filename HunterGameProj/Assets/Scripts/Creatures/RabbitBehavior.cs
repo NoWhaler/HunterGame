@@ -90,7 +90,7 @@ public class RabbitBehavior : SteeringBehavior
                 break;
         }
         ApplyForce(steer);
-        ApplyForce(cliff * 1.5f);
+        ApplyForce(cliff * 1.2f);
         ApplySteeringToMotion();
     }
 

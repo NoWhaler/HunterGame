@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 1861299314399576424}
   m_Layer: 0
   m_Name: Rabbit
-  m_TagString: Rabbit
+  m_TagString: Animals
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,10 +242,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc34955917871d4cbf469163fbc9371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
-  _force: 1
+  velocity: {x: 0, y: 0, z: 0}
+  speed: 3.7
+  force: 0.8
   behavior: 0
-  _wanderSpeed: 4
-  _escapeSpeed: 9
+  _wanderSpeed: 3.7
+  _escapeSpeed: 6.5
   _threatRange: 3.5
   _walkRange: 6

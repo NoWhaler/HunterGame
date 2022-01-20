@@ -743,9 +743,9 @@ MonoBehaviour:
   _deerPrefab: {fileID: 5113226505334321848, guid: 340cdc5e718e2b7448492715cbcdfb2a, type: 3}
   _wolfPrefab: {fileID: 9177144574207597612, guid: 4b3acb54693cfe846af9abccdd05e3c6, type: 3}
   _rabbitPrefab: {fileID: 8589224189578398850, guid: e9718fca9a3ac2047a536bd565e3629f, type: 3}
-  _deerCount: 10
+  _deerCount: 3
   _wolfCount: 2
-  _rabbitCount: 0
+  _rabbitCount: 6
 --- !u!4 &557327296
 Transform:
   m_ObjectHideFlags: 0
@@ -1203,7 +1203,7 @@ GameObject:
   - component: {fileID: 1799227309}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Square
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1459,10 +1459,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73270ecc83259848a30088ad7d7afc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 7
+  _moveSpeed: 3.5
   _bullet: {fileID: 2112717207237418040, guid: b53f99b58b84fe640ad99a1c33d29346, type: 3}
   _bulletDirection: {fileID: 47669873}
-  _amountBullets: 5
+  _amountBullets: 10
 --- !u!114 &1960170247
 MonoBehaviour:
   m_ObjectHideFlags: 0

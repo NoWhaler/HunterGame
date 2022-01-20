@@ -77,19 +77,19 @@ public class SteeringBehavior : MonoBehaviour
 
     public Vector3 AvoidCliffs(){
 
-        if (_currentPosition.x < -24f)
+        if (_currentPosition.x < -23f)
         {
             return CliffsAvoidance(new Vector3(speed, velocity.y));
         }
-        if (_currentPosition.x > 24f)
+        if (_currentPosition.x > 23f)
         {
             return CliffsAvoidance(new Vector3(-speed, velocity.y));
         }
-        if (_currentPosition.y < -24f)
+        if (_currentPosition.y < -23f)
         {
             return CliffsAvoidance(new Vector3(velocity.x, speed));
         }
-        if (_currentPosition.y > 24f)
+        if (_currentPosition.y > 23f)
         {
             return CliffsAvoidance(new Vector3(velocity.x, -speed));
         }

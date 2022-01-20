@@ -9,6 +9,8 @@ public class CreaturesSpawner : MonoBehaviour
     [SerializeField]
     private GameObject _rabbitPrefab;
     
+    private Transform _spawnTransform;
+
     [SerializeField]
     private int _deerCount;
     [SerializeField]
@@ -22,15 +24,25 @@ public class CreaturesSpawner : MonoBehaviour
         return new Vector2(x, y);
     }
 
-    private void Start (){
+    private void Start (){        
         for (int i = 0; i < _deerCount; i++){
-            Instantiate(_deerPrefab, RandomSpawnPointOnSquare(), Quaternion.identity);
+            
+            GenerateAnimals(_deerPrefab, Random.Range(3, 11), i);
         }
-        for (int i = 0; i < _wolfCount; i++){
-            Instantiate(_wolfPrefab, RandomSpawnPointOnSquare(), Quaternion.identity);
+        GenerateAnimals(_wolfPrefab, _wolfCount);
+        GenerateAnimals(_rabbitPrefab, _rabbitCount);       
+        
+    } 
+
+    private void GenerateAnimals(GameObject prefabCreature, int count){
+        for (int i = 0; i < count; i++){
+            GameObject creature = Instantiate(prefabCreature, RandomSpawnPointOnSquare(), Quaternion.identity);
         }
-        for (int i = 0; i < _rabbitCount; i++){
-            Instantiate(_rabbitPrefab, RandomSpawnPointOnSquare(), Quaternion.identity);
+    }   
+
+    private void GenerateAnimals(GameObject prefabCreature, int count, int group){
+        for (int i = 0; i < count; i++){
+            GameObject creature = Instantiate(prefabCreature, RandomSpawnPointOnSquare(), Quaternion.identity, _spawnTransform);
         }
-    }       
+    }   
 }

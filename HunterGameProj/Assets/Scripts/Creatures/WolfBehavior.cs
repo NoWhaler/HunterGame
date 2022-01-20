@@ -109,7 +109,7 @@ public class WolfBehavior : SteeringBehavior
         }    
 
         ApplyForce(steeringBehavior);
-        ApplyForce(cliff * 2f);
+        ApplyForce(cliff * 1.2f);
         ApplySteeringToMotion();
     }     
 
@@ -145,7 +145,7 @@ public class WolfBehavior : SteeringBehavior
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Rabbit") || other.CompareTag("Hunter") || other.CompareTag("Rabbit")){
+        if (other.CompareTag("Animals") || other.CompareTag("Hunter")){
             Destroy(other.gameObject);
             _dieWithoutCatch += _additionalLifeTime;
         }
