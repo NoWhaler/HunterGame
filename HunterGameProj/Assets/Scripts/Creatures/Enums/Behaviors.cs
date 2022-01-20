@@ -4,5 +4,7 @@ public enum Behaviors
     CHASE,
     ESCAPE,
     AVOID,
-    GROUPING
+    COHESION,
+    ALIGN
+
 }

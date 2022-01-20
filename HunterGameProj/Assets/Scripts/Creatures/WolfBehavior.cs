@@ -65,25 +65,25 @@ public class WolfBehavior : SteeringBehavior
             if (_closestTarget != null){
 
                 _target = _closestTarget; 
-                _speed = _chaseSpeed;
+                speed = _chaseSpeed;
             }
             else{
 
                 behavior = Behaviors.WANDER;   
-                _speed = _wanderSpeed;             
+                speed = _wanderSpeed;             
             }
             
         }
         else if (closestTargetDistance > _walkRange * _walkRange){
 
             behavior = Behaviors.WANDER;
-            _speed = _wanderSpeed;            
+            speed = _wanderSpeed;            
         }
         else{
             if (_closestTarget == null){
 
                 behavior = Behaviors.WANDER;
-                _speed = _wanderSpeed;
+                speed = _wanderSpeed;
             }
         }
         

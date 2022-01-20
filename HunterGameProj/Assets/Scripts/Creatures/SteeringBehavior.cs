@@ -3,7 +3,7 @@ using UnityEngine;
 public class SteeringBehavior : MonoBehaviour
 {  
 
-    private Vector3 _velocity;
+    public Vector3 velocity;
 
     private Vector3 _currentPosition;
 
@@ -11,13 +11,13 @@ public class SteeringBehavior : MonoBehaviour
 
     private Vector3 _startPosition; 
 
-    public float _speed;      
+    public float speed;      
 
-    public float _force;
+    public float force;
 
     public void Start(){
         _acceleration = Vector3.zero;
-        _velocity = Vector3.zero;
+        velocity = Vector3.zero;
         _currentPosition = transform.position;
         _startPosition = transform.position;
     }
@@ -29,8 +29,8 @@ public class SteeringBehavior : MonoBehaviour
 
     public void ApplySteeringToMotion()
     {
-        _velocity = Vector3.ClampMagnitude(_velocity + _acceleration, _speed);
-        _currentPosition += _velocity * Time.deltaTime;
+        velocity = Vector3.ClampMagnitude(velocity + _acceleration, speed);
+        _currentPosition += velocity * Time.deltaTime;
         _acceleration = Vector3.zero;  
         RotateTowardTarget();
         transform.position = _currentPosition;
@@ -40,8 +40,8 @@ public class SteeringBehavior : MonoBehaviour
         
         Vector3 desiredVelocity = targetPosition - _currentPosition;        
         desiredVelocity.Normalize();        
-        desiredVelocity *= _speed;        
-        Vector3 steer = Vector3.ClampMagnitude(desiredVelocity - _velocity, _force);
+        desiredVelocity *= speed;        
+        Vector3 steer = Vector3.ClampMagnitude(desiredVelocity - velocity, force);
         
         return steer;
     }
@@ -50,8 +50,8 @@ public class SteeringBehavior : MonoBehaviour
         
         Vector3 desiredVelocity = targetPosition - _currentPosition;        
         desiredVelocity.Normalize();        
-        desiredVelocity *= _speed;        
-        Vector3 steer = Vector3.ClampMagnitude(desiredVelocity - _velocity, _force);
+        desiredVelocity *= speed;        
+        Vector3 steer = Vector3.ClampMagnitude(desiredVelocity - velocity, force);
         
         return steer;
     }
@@ -60,8 +60,8 @@ public class SteeringBehavior : MonoBehaviour
     public Vector3 Escape(Vector3 targetPosition){
         Vector3 desiredVelocity = targetPosition - _currentPosition;        
         desiredVelocity.Normalize();        
-        desiredVelocity *= -_speed;        
-        Vector3 steer = Vector3.ClampMagnitude(desiredVelocity - _velocity, _force);
+        desiredVelocity *= -speed;        
+        Vector3 steer = Vector3.ClampMagnitude(desiredVelocity - velocity, force);
         
         return steer;
     }
@@ -79,26 +79,26 @@ public class SteeringBehavior : MonoBehaviour
 
         if (_currentPosition.x < -24f)
         {
-            return CliffsAvoidance(new Vector3(_speed, _velocity.y));
+            return CliffsAvoidance(new Vector3(speed, velocity.y));
         }
         if (_currentPosition.x > 24f)
         {
-            return CliffsAvoidance(new Vector3(-_speed, _velocity.y));
+            return CliffsAvoidance(new Vector3(-speed, velocity.y));
         }
         if (_currentPosition.y < -24f)
         {
-            return CliffsAvoidance(new Vector3(_velocity.x, _speed));
+            return CliffsAvoidance(new Vector3(velocity.x, speed));
         }
         if (_currentPosition.y > 24f)
         {
-            return CliffsAvoidance(new Vector3(_velocity.x, -_speed));
+            return CliffsAvoidance(new Vector3(velocity.x, -speed));
         }
 
         return Vector3.zero;
     }
     
     private Vector3 CliffsAvoidance(Vector3 desiredVelocity){
-        Vector3 steer = Vector3.ClampMagnitude(desiredVelocity - _velocity, _force);
+        Vector3 steer = Vector3.ClampMagnitude(desiredVelocity - velocity, force);
         return steer;
     }
 }

@@ -743,9 +743,9 @@ MonoBehaviour:
   _deerPrefab: {fileID: 5113226505334321848, guid: 340cdc5e718e2b7448492715cbcdfb2a, type: 3}
   _wolfPrefab: {fileID: 9177144574207597612, guid: 4b3acb54693cfe846af9abccdd05e3c6, type: 3}
   _rabbitPrefab: {fileID: 8589224189578398850, guid: e9718fca9a3ac2047a536bd565e3629f, type: 3}
-  _deerCount: 0
-  _wolfCount: 0
-  _rabbitCount: 10
+  _deerCount: 10
+  _wolfCount: 2
+  _rabbitCount: 0
 --- !u!4 &557327296
 Transform:
   m_ObjectHideFlags: 0

@@ -249,4 +249,4 @@ MonoBehaviour:
   _chaseSpeed: 4.5
   _walkRange: 5
   _chaseRange: 4
-  _dieWithoutCatch: 60
+  _dieWithoutCatch: 30

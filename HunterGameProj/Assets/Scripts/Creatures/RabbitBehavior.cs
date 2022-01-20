@@ -53,24 +53,24 @@ public class RabbitBehavior : SteeringBehavior
             if (_closestEscapeTarget != null)
             {
                 _target = _closestEscapeTarget;
-                _speed = _escapeSpeed;
+                speed = _escapeSpeed;
             }
             else
             {
                 behavior = Behaviors.WANDER;
-                _speed = _wanderSpeed;
+                speed = _wanderSpeed;
             }
         } else if (closestThreatDistance > _walkRange * _walkRange)
         {
             behavior = Behaviors.WANDER;
-            _speed = _wanderSpeed;
+            speed = _wanderSpeed;
         }
         else
         {
             if (_closestEscapeTarget == null)
             {
                 behavior = Behaviors.WANDER;
-                _speed = _wanderSpeed;
+                speed = _wanderSpeed;
             }
         }
         Vector3 cliff = AvoidCliffs();

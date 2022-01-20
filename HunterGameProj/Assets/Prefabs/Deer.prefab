@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 5113226505334321845}
   - component: {fileID: 5113226505334321850}
   - component: {fileID: 5113226505334321851}
+  - component: {fileID: -3910310529175951178}
   m_Layer: 0
   m_Name: Deer
   m_TagString: Deer
@@ -197,3 +198,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &-3910310529175951178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5113226505334321848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f7ceb0dee8f884ea4c33841e546ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 2.5
+  _force: 1
+  behavior: 0
+  _walkRange: 6
+  _avoidRange: 5.5
